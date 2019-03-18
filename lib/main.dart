@@ -6,6 +6,7 @@ import 'delete_listview_Item_demo.dart';
 import 'widget_to_image_demo.dart';
 import 'bottom_bar_demo.dart';
 import 'overlay_demo.dart';
+import 'intro_views_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +35,7 @@ class MyHome extends StatelessWidget {
           _listTile(context, '09 Widget转化为Image截屏操作', WidgetToImageDemo()),
           _listTile(context, '10 去掉水波纹的底部导航栏编写', BottomBarDemo()),
           _listTile(context, '11 弹出widget覆盖原界面并设定时间', OverlayDemo()),
+          _listTile(context, '12 常用APP多屏开场介绍页面制作', IntroViewsDemo()),
         ],
       ),
     );
