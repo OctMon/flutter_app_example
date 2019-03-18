@@ -8,6 +8,7 @@ import 'bottom_bar_demo.dart';
 import 'overlay_demo.dart';
 import 'intro_views_demo.dart';
 import 'reorderable_demo.dart';
+import 'chip_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,8 +31,9 @@ class MyHome extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           _listTile(context, '01 登陆界面TextField的焦点及动作', TextFieldFocusDemo()),
+          _listTile(context, '02 03 04 chip标签系列系列第一个', ChipDemo()),
           _listTile(context, '05 返回或退出时弹出提示信息', WillPopScopeDemo(title: '返回或退出时弹出提示信息')),
-          _listTile(context, '07 实现http接口图片加载', RefreshDemo()),
+          _listTile(context, '06 07 实现http接口图片加载', RefreshDemo()),
           _listTile(context, '08 左滑删除ListView中Item', DeleteListViewItemDemo()),
           _listTile(context, '09 Widget转化为Image截屏操作', WidgetToImageDemo()),
           _listTile(context, '10 去掉水波纹的底部导航栏编写', BottomBarDemo()),

@@ -24,9 +24,12 @@ class _ReorderableDemoState extends State<ReorderableDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return ReorderableListView(
-      children: names.map(_buildCard).toList(),
-      onReorder: _onReorder,
+    return Scaffold(
+      appBar: AppBar(),
+      body: ReorderableListView(
+        children: names.map(_buildCard).toList(),
+        onReorder: _onReorder,
+      ),
     );
   }
 
