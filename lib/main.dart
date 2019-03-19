@@ -10,6 +10,7 @@ import 'overlay_demo.dart';
 import 'intro_views_demo.dart';
 import 'reorderable_demo.dart';
 import 'chip_demo.dart';
+import 'single_screen_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,35 +39,15 @@ class _MyHomeState extends State<MyHome> {
       appBar: AppBar(title: Text("Flutter实用例子")),
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverFixedExtentList(
-            itemExtent: _height * 11.0,
+          SliverList(
+              delegate: SliverChildBuilderDelegate((context, index) {
+            return _header('工作实用例子1', 'http://www.flutterj.com/?post=79');
+          }, childCount: 1)),
+          SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                return ListView(
-                  itemExtent: _height,
+                return Column(
                   children: <Widget>[
-                    GestureDetector(
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Container(
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: '工作实用例子1\n'),
-                                TextSpan(
-                                  text: "http://www.flutterj.com/?post=79",
-                                  style: TextStyle(color: Colors.blue),
-                                ),
-                              ],
-                            ),
-                          ),
-                          height: _height,
-                        ),
-                      ),
-                      onTap: () {
-                        _launchURL('http://www.flutterj.com/?post=79');
-                      },
-                    ),
                     _listTile(context, '01 登陆界面TextField的焦点及动作',
                         TextFieldFocusDemo()),
                     _listTile(context, '02 03 04 chip标签系列系列第一个', ChipDemo()),
@@ -87,22 +68,51 @@ class _MyHomeState extends State<MyHome> {
               childCount: 1,
             ),
           ),
+          SliverList(
+              delegate: SliverChildBuilderDelegate((context, index) {
+            return _header('工作实用例子2', 'http://www.flutterj.com/?post=90');
+          }, childCount: 1)),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return Column(
+                  children: <Widget>[
+                    _listTile(context, '01 单屏软件启动动画介绍页面制作', SingleScreenDemo()),
+                  ],
+                );
+              },
+              childCount: 1,
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _listTile(BuildContext context, String title, Widget widget) {
+  Widget _header(String title, url) {
     return ListTile(
-      title: Text(title),
+      title: Text(
+        title,
+        style: TextStyle(color: Colors.blue),
+      ),
+      trailing: Icon(Icons.open_in_browser),
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => widget,
-            ));
+        _launchURL(url);
       },
     );
+  }
+
+  Widget _listTile(BuildContext context, String title, Widget child) {
+    return ListTile(
+        title: Text(title),
+        trailing: Icon(Icons.arrow_forward_ios),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => child,
+              ));
+        });
   }
 
   void _launchURL(String url) async {
