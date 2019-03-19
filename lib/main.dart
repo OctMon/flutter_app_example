@@ -11,6 +11,7 @@ import 'intro_views_demo.dart';
 import 'reorderable_demo.dart';
 import 'chip_demo.dart';
 import 'single_screen_demo.dart';
+import 'gradient_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -78,6 +79,7 @@ class _MyHomeState extends State<MyHome> {
                 return Column(
                   children: <Widget>[
                     _listTile(context, '01 单屏软件启动动画介绍页面制作', SingleScreenDemo()),
+                    _listTile(context, '02 AppBar下滑渐变效果制作', GradientDemo()),
                   ],
                 );
               },
